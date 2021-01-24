@@ -6,7 +6,7 @@ import json
 if __name__ == '__main__':
 
     # Read arguments and configurations and initialize
-    config_file = "/home/mrloquacious/.confluent/librdkafka.config"
+    config_file = "/home/jemerson/.confluent/librdkafka.config"
     topic = "breadcrumbs"
     conf = json.load(open(config_file))
 

@@ -9,7 +9,7 @@ import time
 
 # Grab latest datafile from ./data/ and sort by act_time
 def get_latest_json_from_data_file():
-    file_list = glob.glob('/home/mrloquacious/wopr/data/*')
+    file_list = glob.glob('/home/jemerson/wopr/data/*')
     latest_file = max(file_list, key=os.path.getctime)
     print("Loading json from", latest_file)
     file = open(latest_file)
@@ -20,7 +20,7 @@ def get_latest_json_from_data_file():
 if __name__ == '__main__':
 
     # Read configuration and initialize
-    config_file = "/home/mrloquacious/.confluent/librdkafka.config"
+    config_file = "/home/jemerson/.confluent/librdkafka.config"
     topic = "breadcrumbs"
     conf = json.load(open(config_file))
 
