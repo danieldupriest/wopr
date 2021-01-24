@@ -9,7 +9,7 @@ import time
 
 # Grab latest datafile from ./data/ and sort by act_time
 def get_latest_json_from_data_file():
-    file_list = glob.glob('./data/*')
+    file_list = glob.glob('/home/mrloquacious/wopr/data/*')
     latest_file = max(file_list, key=os.path.getctime)
     print("Loading json from", latest_file)
     file = open(latest_file)
