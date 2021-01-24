@@ -1,44 +1,28 @@
-#!/usr/bin/env python
-#
-# Copyright 2020 Confluent Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
-# =============================================================================
-#
-# Produce messages to Confluent Cloud
-# Using Confluent Python Client for Apache Kafka
-#
-# =============================================================================
+#!/bin/python3
 
 from confluent_kafka import Producer, KafkaError
+import glob
+import os
 import json
-import ccloud_lib
 import random
 import time
 
+# Grab latest datafile from ./data/ and sort by act_time
+def get_latest_json_from_data_file():
+    file_list = glob.glob('./data/*')
+    latest_file = max(file_list, key=os.path.getctime)
+    print("Loading json from", latest_file)
+    file = open(latest_file)
+    data = json.load(file)
+    data.sort(key=lambda i: int(i["ACT_TIME"]))
+    return data
+
 if __name__ == '__main__':
 
-    # Grab breadcrumbs
-    file = open("1000_breadcrumbs.json")
-    data = json.load(file)
-
-    # Read arguments and configurations and initialize
-    args = ccloud_lib.parse_args()
-    config_file = args.config_file
-    topic = args.topic
-    conf = ccloud_lib.read_ccloud_config(config_file)
+    # Read configuration and initialize
+    config_file = "/home/mrloquacious/.confluent/librdkafka.config"
+    topic = "breadcrumbs"
+    conf = json.load(open(config_file))
 
     # Create Producer instance
     producer = Producer({
@@ -49,11 +33,10 @@ if __name__ == '__main__':
         'sasl.password': conf['sasl.password'],
     })
 
-    # Create topic if needed
-    topic = str(random.randint(1,5))
-    ccloud_lib.create_topic(conf, topic)
+    # Create topic if needed. Problem with ccloud_lib
+    # ccloud_lib.create_topic(conf, topic)
 
-    delivered_records = 0
+    delivered_records=0
 
     # Optional per-message on_delivery handler (triggered by poll() or flush())
     # when a message has been successfully delivered or
@@ -67,21 +50,21 @@ if __name__ == '__main__':
             print("Failed to deliver message: {}".format(err))
         else:
             delivered_records += 1
-            print("Produced record to topic {} partition [{}] @ offset {}"
-                  .format(msg.topic(), msg.partition(), msg.offset()))
+            # print("Produced record to topic {} partition [{}] @ offset {}"
+            #      .format(msg.topic(), msg.partition(), msg.offset()))
 
-
-    for data_line in data:
-        record_key = "alice"
-        record_value = json.dumps(data_line)
-        print("Producing record: {}\t{}".format(record_key, record_value))
-        producer.produce(topic, key=record_key, value=record_value, on_delivery=acked)
-        # p.poll() serves delivery reports (on_delivery)
-        # from previous produce() calls.
-        producer.poll(0)
-        #producer.flush()
-        # time.sleep(0.250)
+    while True:
+        data = get_latest_json_from_data_file()
+        for i in range(len(data)):
+            if i%5 == 0:
+                producer.flush()
+                time.sleep(5)
+            data_line = data[i]
+            record_key = "wopr_key"
+            record_value = json.dumps(data_line)
+            # print("Producing record: {}\t{}".format(record_key, record_value))
+            producer.produce(topic, key=record_key, value=record_value, on_delivery=acked)
+            producer.poll(0)
 
     producer.flush()
 
-    print("{} messages were produced to topic {}!".format(delivered_records, topic))
