@@ -30,4 +30,26 @@ Update `producer.py` and `consumer.py` with correct topic name.
 
 ### Cron job to download breadcrumb json data
 
+To set a cron job to run the data gathering script at a particular time each day, open the list of cron jobs with `crontab -e` and follow the instructions in the crontab comments.
+
+As an example, adding the following line will download the data at 12:30 PM every day:
+
+```30 12 * * * /path/to/download_json.py``` 
+
 ### Systemd service configuration
+
+Add system services in `/etc/systemd/system/` to run `producer.py` and `consumer.py`.
+
+A minimal setup using `systemd` to run `producer.py` using the interpreter `/usr/bin/python3` might look like this:
+
+```[Unit]
+Description = Produce daemon
+After = network.target 
+
+[Service]
+Type = simple
+User= {{username}}
+ExecStart = /usr/bin/python3 /path/to/producer.py
+
+[Install]
+WantedBy = multi-user.target
