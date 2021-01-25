@@ -32,9 +32,9 @@ Update `producer.py` and `consumer.py` with correct topic name.
 
 To set a cron job to run the data gathering script at a particular time each day, open the list of cron jobs with `crontab -e` and follow the instructions in the crontab comments.
 
-As an example, adding the following line will download the data at 12:30 PM every day:
+As an example, adding the following line will download the data at 12:30 PM every day. Your Python interpreter may not be located at `/usr/bin/python3`, so change that part if necessary:
 
-```30 12 * * * /path/to/download_json.py``` 
+```30 12 * * * /usr/bin/python3 /path/to/download_json.py``` 
 
 ### Systemd service configuration
 
