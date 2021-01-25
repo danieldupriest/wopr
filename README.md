@@ -17,7 +17,7 @@ Create confluent config file `librdkafka.config` of the format:
     "bootstrap.servers": "{{server}}",
     "security.protocol": "SASL_SSL",
     "sasl.mechanisms": "PLAIN",
-    "sasl.username": {{username}},
+    "sasl.username": "{{username}}",
     "sasl.password": "{{password}}"
 }
 ```
