@@ -1,17 +1,24 @@
 #!/bin/python3
 
 from confluent_kafka import Producer, KafkaError
+from datetime import datetime
 import glob
 import os
 import json
 import random
 import time
 
+path = "/home/jemerson/wopr"
+
 # Grab latest datafile from ./data/ and sort by act_time
 def get_latest_json_from_data_file():
     file_list = glob.glob('/home/jemerson/wopr/data/*')
     latest_file = max(file_list, key=os.path.getctime)
-    print("Loading json from", latest_file)
+    date = str(datetime.now().strftime("%Y_%m_%d"))
+    time = str(datetime.now().strftime("%H:%M"))
+    log_file_path = path + "/log/" + "produce_log.txt"
+    with open(log_file_path, "a+") as f:
+        f.write(date + " " + time + " - " + "Loading data from file " + latest_file + " for production.\n")
     file = open(latest_file)
     data = json.load(file)
     data.sort(key=lambda i: int(i["ACT_TIME"]))
@@ -56,7 +63,7 @@ if __name__ == '__main__':
     while True:
         data = get_latest_json_from_data_file()
         for i in range(len(data)):
-            if i%5 == 0:
+            if i%8 == 0:
                 producer.flush()
                 time.sleep(5)
             data_line = data[i]
