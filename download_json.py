@@ -10,7 +10,11 @@ def download_json():
     #date = str(datetime.now().strftime("%Y_%m_%d_%H:%M")) # < For testing
     date = str(datetime.now().strftime("%Y_%m_%d")) 
     datafile = path + "/data/" + date + ".json"
-    urllib.request.urlretrieve(url, datafile)
+    try:
+        urllib.request.urlretrieve(url, datafile)
+    except Exception:
+        print("Download attempt failed for unknown reason.")
+    
 
 if __name__ == "__main__":
     download_json()

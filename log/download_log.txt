@@ -55,3 +55,8 @@
 2021_01_26 02:23 Download appears to have been successful.
 2021_01_26 07:23 Download appears to have been successful.
 2021_01_26 12:23 Download appears to have been successful.
+2021_01_26 17:23 Download appears to have been successful.
+2021_01_26 23:23 Download appears to have been successful.
+2021_01_27 10:53 Download appears to have failed, so we'll re-download.
+2021_01_27 12:23 Download appears to have failed, so we'll re-download.
+2021_01_27 17:23 Download appears to have been successful.

@@ -14,20 +14,22 @@ success = False
 try:
     f = open(datafile)
     success = True
+    f.close()
 except IOError:
     download_json.download_json()
-finally:
-    f.close()
+
+#finally:
+#    f.close()
 
 try:
-    f = open(logfile,"a+")
+    log = open(logfile,"a+")
     if success is True:
-        f.write(date + " " + time + " Download appears to have been successful.\n")
+        log.write(date + " " + time + " Download appears to have been successful.\n")
     elif success is False:
-        f.write(date + " " + time + " Download appears to have failed, so we'll re-download.\n")
+        log.write(date + " " + time + " Download appears to have failed, so we'll re-download.\n")
 except IOError:
     pass
 finally:
-    f.close()
+    log.close()
 
 
