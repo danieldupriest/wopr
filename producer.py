@@ -8,18 +8,24 @@ import json
 import random
 import time
 
-path = "/home/jemerson/wopr"
+WORKING_PATH = "/home/jemerson/wopr"
+ROWS_PER_INTERVAL = 8 # n rows sent every interval
+SLEEP_INTERVAL = 5 # seconds
+FILE_CHECK_RATE = 100 # check for new file once every n rows
+
+def get_latest_data_file():
+    file_list = glob.glob(WORKING_PATH + '/data/*')
+    latest_file = max(file_list, key=os.path.getctime)
+    return latest_file
 
 # Grab latest datafile from ./data/ and sort by act_time
-def get_latest_json_from_data_file():
-    file_list = glob.glob('/home/jemerson/wopr/data/*')
-    latest_file = max(file_list, key=os.path.getctime)
+def replace_data_file(data_file):
     date = str(datetime.now().strftime("%Y_%m_%d"))
     time = str(datetime.now().strftime("%H:%M"))
-    log_file_path = path + "/log/" + "produce_log.txt"
+    log_file_path = WORKING_PATH + "/log/" + "produce_log.txt"
     with open(log_file_path, "a+") as f:
-        f.write(date + " " + time + " - " + "Loading data from file " + latest_file + " for production.\n")
-    file = open(latest_file)
+        f.write(date + " " + time + " - " + "Loading data from file " + data_file + " for production.\n")
+    file = open(data_file)
     data = json.load(file)
     data.sort(key=lambda i: int(i["ACT_TIME"]))
     return data
@@ -30,6 +36,7 @@ if __name__ == '__main__':
     config_file = "/home/jemerson/.confluent/librdkafka.config"
     topic = "breadcrumbs"
     conf = json.load(open(config_file))
+    current_data_file = get_latest_data_file()
 
     # Create Producer instance
     producer = Producer({
@@ -60,13 +67,20 @@ if __name__ == '__main__':
             # print("Produced record to topic {} partition [{}] @ offset {}"
             #      .format(msg.topic(), msg.partition(), msg.offset()))
 
+    json_data = replace_data_file(current_data_file)
     while True:
-        data = get_latest_json_from_data_file()
-        for i in range(len(data)):
-            if i%8 == 0:
+        i = 0
+        while i in range(len(json_data)):
+            if i%ROWS_PER_INTERVAL == 0:
                 producer.flush()
-                time.sleep(5)
-            data_line = data[i]
+                time.sleep(SLEEP_INTERVAL)
+            if i%FILE_CHECK_RATE == 0:
+                latest_file = get_latest_data_file()
+                if latest_file != current_data_file:
+                    json_data = replace_data_file(latest_file)
+                    current_data_file = latest_file
+                    i = 0
+            data_line = json_data[i]
             record_key = "wopr_key"
             record_value = json.dumps(data_line)
             # print("Producing record: {}\t{}".format(record_key, record_value))
