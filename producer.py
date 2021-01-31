@@ -86,6 +86,7 @@ if __name__ == '__main__':
             # print("Producing record: {}\t{}".format(record_key, record_value))
             producer.produce(topic, key=record_key, value=record_value, on_delivery=acked)
             producer.poll(0)
+            i += 1
 
     producer.flush()
 
