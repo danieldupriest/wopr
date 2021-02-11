@@ -1,4 +1,6 @@
 #!/bin/python3
+# Load data from file and produce kafka messages slowly over the day.
+# Check regularly for newer files to load.
 
 from confluent_kafka import Producer, KafkaError
 from datetime import datetime
@@ -9,16 +11,18 @@ import random
 import time
 
 WORKING_PATH = "/home/jemerson/wopr"
+CONFIG_FILE = "/home/jemerson/.confluent/librdkafka.config"
 ROWS_PER_INTERVAL = 8 # n rows sent every interval
 SLEEP_INTERVAL = 5 # seconds
 FILE_CHECK_RATE = 100 # check for new file once every n rows
 
+# Grabs the path of the latest file in the data/ directory.
 def get_latest_data_file():
     file_list = glob.glob(WORKING_PATH + '/data/*')
     latest_file = max(file_list, key=os.path.getctime)
     return latest_file
 
-# Grab latest datafile from ./data/ and sort by act_time
+# Opens the specified data file and returns the json interpretation.
 def replace_data_file(data_file):
     date = str(datetime.now().strftime("%Y_%m_%d"))
     time = str(datetime.now().strftime("%H:%M"))
@@ -33,9 +37,8 @@ def replace_data_file(data_file):
 if __name__ == '__main__':
 
     # Read configuration and initialize
-    config_file = "/home/jemerson/.confluent/librdkafka.config"
     topic = "breadcrumbs"
-    conf = json.load(open(config_file))
+    conf = json.load(open(CONFIG_FILE))
     current_data_file = get_latest_data_file()
 
     # Create Producer instance
@@ -46,9 +49,6 @@ if __name__ == '__main__':
         'sasl.username': conf['sasl.username'],
         'sasl.password': conf['sasl.password'],
     })
-
-    # Create topic if needed. Problem with ccloud_lib
-    # ccloud_lib.create_topic(conf, topic)
 
     delivered_records=0
 
@@ -83,7 +83,6 @@ if __name__ == '__main__':
             data_line = json_data[i]
             record_key = "wopr_key"
             record_value = json.dumps(data_line)
-            # print("Producing record: {}\t{}".format(record_key, record_value))
             producer.produce(topic, key=record_key, value=record_value, on_delivery=acked)
             producer.poll(0)
             i += 1

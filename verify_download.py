@@ -18,9 +18,6 @@ try:
 except IOError:
     download_json.download_json()
 
-#finally:
-#    f.close()
-
 try:
     log = open(logfile,"a+")
     if success is True:
