@@ -21,7 +21,7 @@ def set_dtypes(df):
     df = df.astype({
             "EVENT_NO_TRIP": 'int64',
             "OPD_DATE": 'string', # This doesn't seem to work: remains object type
-            "VEHICLE_ID": 'int64',
+            "VEHICLE_ID": 'int64', # 'string',
             "ACT_TIME": 'int64',
             "VELOCITY": 'int64',
             "DIRECTION": 'int64',
@@ -85,13 +85,21 @@ def main():
     datafile = path + "/test/2021_02_06.json"
     df = json_to_df(datafile, JSON_COLUMNS)
 
+
     # Drop unneeded columns and rows with empty string; set datatypes:
     df = drop_cols_and_rows(df, TO_DROP)
+
+    '''
+    print(df.describe())
+    print(df.dtypes)
+    '''
+
     df = convert_and_set_dtypes(df)
-    print(df.head())
-    print(df.max())
 
-
+    '''
+    print(df.describe())
+    print(df.dtypes)
+    '''
 
     '''
     ##### Process datetime #####
