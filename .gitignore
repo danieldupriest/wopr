@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 scraps.py
 /test/*
+*.swp
 
 # C extensions
 *.so

@@ -49,7 +49,7 @@ def json_to_df(datafile, columns):
 
 ##### PROCESS DATA ON EMPTY FIELDS #####
 # Loop over data directory and process the daily JSON breadcrumb data files:
-def create_empty_fields_df(file_list, all_columns):
+def create_empty_fields_df(file_list, all_columns, selected_headers):
     num_rows = []
     dfs = []
     json_dates = []
@@ -64,7 +64,7 @@ def create_empty_fields_df(file_list, all_columns):
     df.columns = all_columns # JSON_COLUMNS
     df = add_col(df, "num_rows", num_rows) 
     df = add_col(df, "json_date", json_dates)
-    df = filter_columns(df, HEADERS)
+    df = filter_columns(df, selected_headers) # HEADERS
     sorted_df = df.sort_values(by='json_date')
     return sorted_df
 
@@ -100,21 +100,31 @@ def calc_percentages(df):
 
 def create_bc_stats_csv(df):
     empty_fields_csv = df.to_csv('bc_stats.csv')
+    return empty_fields_csv
+
+def display_bc_stats(csv):
+    pass
+    # To view from CLI:
+    #column -s, -t < bc_stats.csv | less -#2 -N -S
     
-def main():
+def process_all_json():
     # Process the whole list:
-    '''
     file_list = get_file_list()
-    df = create_empty_fields_df(file_list)
+    df = create_empty_fields_df(file_list, JSON_COLUMNS, HEADERS)
     create_bc_stats_csv(df)
-    '''
-    # Already processed the old ones.
-    # Append the latest row:  
+
+def add_daily_data():
     file_name = get_new_file()
-    df = create_empty_fields_df([file_name])
+    df = create_empty_fields_df([file_name], JSON_COLUMNS, HEADERS)
     df = calc_percentages(df)
     df.to_csv('bc_stats.csv', header=None, mode='a')
-    
+
+def main():
+    # Already processed the old ones.
+    # Append the latest row:  
+    add_daily_data()
+
+
 if __name__ == '__main__':
     main()
 
