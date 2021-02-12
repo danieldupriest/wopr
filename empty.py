@@ -6,25 +6,9 @@ import os
 import glob
 from datetime import date
 from csv import writer
-
-JSON_COLUMNS = ['EVENT_NO_TRIP', 'EVENT_NO_STOP', 'OPD_DATE', 'VEHICLE_ID', 'METERS', 'ACT_TIME', 'VELOCITY', 'DIRECTION', 'RADIO_QUALITY', 'GPS_LONGITUDE', 'GPS_LATITUDE', 'GPS_SATELLITES', 'GPS_HDOP', 'SCHEDULE_DEVIATION']
-HEADERS = ['EVENT_NO_TRIP', 'OPD_DATE', 'VEHICLE_ID', 'ACT_TIME', 'VELOCITY', 'DIRECTION', 'GPS_LONGITUDE', 'GPS_LATITUDE', 'num_rows', 'json_date']
-TO_DROP = ['EVENT_NO_STOP','METERS', 'RADIO_QUALITY', 'GPS_SATELLITES', 'GPS_HDOP', 'SCHEDULE_DEVIATION']
-
-def get_test_file(date):
-    path = os.path.abspath('.')
-    test_file = path + "/data/" + date + ".json"
-    return test_file
-
-# Create a list of data files in the /data directory:
-def get_file_list():
-    path = os.path.abspath('.')
-    file_list = glob.glob(path + '/data/*')
-    test_file = path + "/data/2021_02_05.json"
-    file_list.sort()
-    #return [test_file]
-    return file_list
-        
+from lists import JSON_COLUMNS, SELECTED_HDRS, TO_DROP
+from utilities import get_test_file, get_file_list, json_to_df
+       
 def get_new_file():
     path = os.path.abspath('.') 
     file_list = glob.glob(path + '/data/*')
@@ -36,16 +20,7 @@ def get_new_file():
     if the_date == the_file:
         return str(path) + "/data/" + the_date + ".json"
     else:
-        print("Attempted to append today's row to bc_stats.csv, but was unsuccessful for some reason (maybe today's JSON file did not download successfully).")
-
-# Convert a JSON breadcrumb data file to a pandas dataframe:
-def json_to_df(datafile, columns):
-    with open(datafile, "r") as j: 
-        data = json.load(j)
-    df = pd.DataFrame(data)
-    # Why does this not get saved and how can I make it so?: TODO
-    df.columns = columns #JSON_COLUMNS
-    return df
+        print("Attempted to append today's row to empty_str_stats.csv, but was unsuccessful for some reason (maybe today's JSON file did not download successfully).")
 
 ##### PROCESS DATA ON EMPTY FIELDS #####
 # Loop over data directory and process the daily JSON breadcrumb data files:
@@ -64,7 +39,7 @@ def create_empty_fields_df(file_list, all_columns, selected_headers):
     df.columns = all_columns # JSON_COLUMNS
     df = add_col(df, "num_rows", num_rows) 
     df = add_col(df, "json_date", json_dates)
-    df = filter_columns(df, selected_headers) # HEADERS
+    df = filter_columns(df, selected_headers) # SELECTED_HDRS
     sorted_df = df.sort_values(by='json_date')
     return sorted_df
 
@@ -98,26 +73,26 @@ def calc_percentages(df):
         df[c] = round(100 * df[c]/df['num_rows'], 2)
     return df
 
-def create_bc_stats_csv(df):
-    empty_fields_csv = df.to_csv('bc_stats.csv')
+def create_empty_str_stats_csv(df):
+    empty_fields_csv = df.to_csv('empty_str_stats.csv')
     return empty_fields_csv
 
-def display_bc_stats(csv):
+def display_empty_str_stats(csv):
     pass
     # To view from CLI:
-    #column -s, -t < bc_stats.csv | less -#2 -N -S
+    #column -s, -t < empty_str_stats.csv | less -#2 -N -S
     
 def process_all_json():
     # Process the whole list:
     file_list = get_file_list()
-    df = create_empty_fields_df(file_list, JSON_COLUMNS, HEADERS)
-    create_bc_stats_csv(df)
+    df = create_empty_fields_df(file_list, JSON_COLUMNS, SELECTED_HDRS)
+    create_empty_str_stats_csv(df)
 
 def add_daily_data():
     file_name = get_new_file()
-    df = create_empty_fields_df([file_name], JSON_COLUMNS, HEADERS)
+    df = create_empty_fields_df([file_name], JSON_COLUMNS, SELECTED_HDRS)
     df = calc_percentages(df)
-    df.to_csv('bc_stats.csv', header=None, mode='a')
+    df.to_csv('empty_str_stats.csv', header=None, mode='a')
 
 def main():
     # Already processed the old ones.

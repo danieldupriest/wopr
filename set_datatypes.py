@@ -3,7 +3,8 @@ import pandas as pd
 import numpy as np
 import json
 import os
-from data_stats import get_file_list, json_to_df, JSON_COLUMNS,HEADERS,TO_DROP
+from lists import JSON_COLUMNS, SELECTED_HDRS, TO_DROP
+from utilities import get_file_list, json_to_df
 from transform import convert_to_mph 
 
 # Clean the dataframe by dropping unneeded columns and rows with empty fields:

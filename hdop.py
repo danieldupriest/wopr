@@ -4,7 +4,7 @@ import numpy as np
 import json
 import os
 import glob
-from data_stats import get_file_list, json_to_df 
+from utilities import get_file_list, json_to_df 
 
 def hdop_values(df, date):
     HDOP_VAL = [-np.inf,0,1,2,5,10,20,np.inf]

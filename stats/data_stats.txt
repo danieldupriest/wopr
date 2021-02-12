@@ -1,0 +1,728 @@
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         169960     169960     169960   169960   169960    169960        169960       169960
+unique           850          1         34    56522       37       360         75759        56938
+top        167234152  05-SEP-20       6010    60194       12         0   -122.533328    45.618828
+freq             451     169960       7408       12    12194      9092           263          268
+MIN-----
+ EVENT_NO_TRIP     167262804
+OPD_DATE          05-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              89540
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.299463
+GPS_LATITUDE      45.780967
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     167195832
+OPD_DATE          05-SEP-20
+VEHICLE_ID             2267
+ACT_TIME              20337
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.692548
+GPS_LATITUDE      45.558043
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         133190     133190     133190   133190   133190    133190        133190       133190
+unique           699          1         28    51327       38       360         64740        50907
+top        167264996  06-SEP-20       4016    41136       11         0   -122.584845    45.656078
+freq             484     133190       7403       10     9334      7297           186          195
+MIN-----
+ EVENT_NO_TRIP     167378932
+OPD_DATE          06-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              89224
+VELOCITY                 37
+DIRECTION               359
+GPS_LONGITUDE   -122.299517
+GPS_LATITUDE      45.780965
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     167262848
+OPD_DATE          06-SEP-20
+VEHICLE_ID             2268
+ACT_TIME              21046
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.692537
+GPS_LATITUDE       45.55805
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         132764     132764     132764   132764   132764    132764        132764       132764
+unique           700          1         27    51940       37       360         64985        51243
+top        167316192  07-SEP-20       6008    59469       11         0   -122.505648    45.656067
+freq             456     132764       7153       11     9463      6759           130          144
+MIN-----
+ EVENT_NO_TRIP     167329472
+OPD_DATE          07-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              89626
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.299487
+GPS_LATITUDE      45.780963
+dtype: object
+MAX-----
+ EVENT_NO_TRIP    167294792
+OPD_DATE         07-SEP-20
+VEHICLE_ID            2262
+ACT_TIME             21643
+VELOCITY                 0
+DIRECTION                0
+GPS_LONGITUDE   -122.69255
+GPS_LATITUDE     45.557953
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         365218     365218     365218   365218   365218    365218        365218       365218
+unique          1664          1         91    67702       38       360        107581        99149
+top        167411238  08-SEP-20       6008    59518       11         0   -122.584843    45.656078
+freq             836     365218       8159       18    24782     23627           278          293
+MIN-----
+ EVENT_NO_TRIP    167426705
+OPD_DATE         08-SEP-20
+VEHICLE_ID         1298380
+ACT_TIME             90712
+VELOCITY                37
+DIRECTION              359
+GPS_LONGITUDE   -122.29951
+GPS_LATITUDE     45.866848
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     167329910
+OPD_DATE          08-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              15703
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708243
+GPS_LATITUDE      45.494403
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         354881     354881     354881   354881   354881    354881        354881       354881
+unique          1614          1         83    67575       37       360        107041        98573
+top        167483799  09-SEP-20       4031    63984       11         0   -122.584825    45.656072
+freq             829     354881       8074       18    24002     22302           265          287
+MIN-----
+ EVENT_NO_TRIP     167568982
+OPD_DATE          09-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              90362
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.299522
+GPS_LATITUDE       45.86686
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     167428112
+OPD_DATE          09-SEP-20
+VEHICLE_ID             2218
+ACT_TIME              15764
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708218
+GPS_LATITUDE        45.4944
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         366886     366886     366886   366886   366886    366886        366886       366886
+unique          1651          1         88    67640       39       360        106924        99966
+top        167570986  10-SEP-20       6010    59801        0         0   -122.584838    45.656072
+freq             853     366886       7681       19    25807     25649           281          303
+MIN-----
+ EVENT_NO_TRIP    167662512
+OPD_DATE         10-SEP-20
+VEHICLE_ID         1298380
+ACT_TIME             90557
+VELOCITY                38
+DIRECTION              359
+GPS_LONGITUDE   -122.29952
+GPS_LATITUDE     45.866848
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     167530837
+OPD_DATE          10-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              15263
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708225
+GPS_LATITUDE      45.494397
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         361558     361558     361558   361558   361558    361558        361558       361558
+unique          1609          1         88    67864       37       360        108163        95538
+top        167674081  11-SEP-20       4006    24190        0         0   -122.664963    45.689397
+freq            1470     361558       7905       18    28875     26352           335          329
+MIN-----
+ EVENT_NO_TRIP     167722889
+OPD_DATE          11-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              90203
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.320637
+GPS_LATITUDE      45.866838
+dtype: object
+MAX-----
+ EVENT_NO_TRIP    167613366
+OPD_DATE         11-SEP-20
+VEHICLE_ID            1776
+ACT_TIME             15556
+VELOCITY                 0
+DIRECTION                0
+GPS_LONGITUDE   -122.70821
+GPS_LATITUDE     45.494395
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         168403     168403     168403   168403   168403    168403        168403       168403
+unique           846          1         34    56000       37       360         75473        56652
+top        167727965  12-SEP-20       6010    58757       12         0   -122.664237     45.69003
+freq             524     168403       6986       11    12181      9097           136          132
+MIN-----
+ EVENT_NO_TRIP     167742110
+OPD_DATE          12-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              89375
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.299505
+GPS_LATITUDE      45.780968
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     167695891
+OPD_DATE          12-SEP-20
+VEHICLE_ID             2267
+ACT_TIME              20689
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.692548
+GPS_LATITUDE      45.558035
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         129761     129761     129761   129761   129761    129761        129761       129761
+unique           695          1         30    51340       37       360         63654        50653
+top        167787500  13-SEP-20       6010    63022       11         0   -122.664208     45.69003
+freq             495     129761       7367       11     9929      6775           132          128
+MIN-----
+ EVENT_NO_TRIP     167792079
+OPD_DATE          13-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              89504
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.299495
+GPS_LATITUDE      45.780962
+dtype: object
+MAX-----
+ EVENT_NO_TRIP    167748492
+OPD_DATE         13-SEP-20
+VEHICLE_ID            2284
+ACT_TIME             21177
+VELOCITY                 0
+DIRECTION                0
+GPS_LONGITUDE   -122.69254
+GPS_LATITUDE     45.558017
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         363104     363104     363104   363104   363104    363104        363104       363104
+unique          1707          1         92    67957       37       360        107671        97143
+top        167865875  14-SEP-20       6002    56235        0         0   -122.584665    45.594625
+freq             880     363104       8238       19    24880     24266           267          217
+MIN-----
+ EVENT_NO_TRIP     167888069
+OPD_DATE          14-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              90521
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.299512
+GPS_LATITUDE      45.866845
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     167793159
+OPD_DATE          14-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              14872
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708215
+GPS_LATITUDE      45.494395
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         353663     353663     353663   353663   353663    353663        353663       353663
+unique          1655          1         88    68245       38       360        107117        96284
+top        167936078  15-SEP-20       6006    57258       11         0   -122.664008    45.690322
+freq             890     353663       8087       19    25083     22556           291          284
+MIN-----
+ EVENT_NO_TRIP     167981707
+OPD_DATE          15-SEP-20
+VEHICLE_ID          1254300
+ACT_TIME              90539
+VELOCITY                 37
+DIRECTION               359
+GPS_LONGITUDE   -122.299487
+GPS_LATITUDE      45.866848
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     167907116
+OPD_DATE          15-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              14897
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708217
+GPS_LATITUDE      45.494383
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         362988     362988     362988   362988   362988    362988        362988       362988
+unique          1667          1         89    68021       39       360        107257        96778
+top        168051846  16-SEP-20       6009    66945        0         0   -122.678517    45.505095
+freq             949     362988       8222       18    27541     26505           649          625
+MIN-----
+ EVENT_NO_TRIP     168123506
+OPD_DATE          16-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              90499
+VELOCITY                 49
+DIRECTION               359
+GPS_LONGITUDE   -122.299492
+GPS_LATITUDE       45.86685
+dtype: object
+MAX-----
+ EVENT_NO_TRIP    167981908
+OPD_DATE         16-SEP-20
+VEHICLE_ID            1776
+ACT_TIME             15004
+VELOCITY                 0
+DIRECTION                0
+GPS_LONGITUDE   -122.70821
+GPS_LATITUDE     45.494415
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         364587     364587     364587   364587   364587    364587        364587       364587
+unique          1687          1         88    67934       38       360        108192        97370
+top        168125495  17-SEP-20       6004    60719        0         0   -122.664493    45.689433
+freq             921     364587       7633       18    25954     24804           310          303
+MIN-----
+ EVENT_NO_TRIP     168273306
+OPD_DATE          17-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              90317
+VELOCITY                 37
+DIRECTION               359
+GPS_LONGITUDE   -122.299477
+GPS_LATITUDE      45.866855
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168082643
+OPD_DATE          17-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              14919
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708237
+GPS_LATITUDE      45.494392
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         378586     378586     378586   378586   378586    378586        378586       378586
+unique          1693          1         88    68125       37       360        108163        99360
+top        168196012  18-SEP-20       6001    59965        0         0    -122.66035     45.72169
+freq             868     378586       8213       21    26705     25561           293          291
+MIN-----
+ EVENT_NO_TRIP    168279489
+OPD_DATE         18-SEP-20
+VEHICLE_ID         1298380
+ACT_TIME             90761
+VELOCITY                36
+DIRECTION              359
+GPS_LONGITUDE   -122.32064
+GPS_LATITUDE      45.89615
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168170513
+OPD_DATE          18-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              15924
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708217
+GPS_LATITUDE      45.494387
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         179963     179963     179963   179963   179963    179963        179963       179963
+unique           843          1         37    56567       37       360         78144        58675
+top        168299405  19-SEP-20       6009    31725        0         0     -122.6639    45.639308
+freq             453     179963       7520       12    13290     10048           158          156
+MIN-----
+ EVENT_NO_TRIP     168305170
+OPD_DATE          19-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              89600
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.299455
+GPS_LATITUDE      45.780958
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168279529
+OPD_DATE          19-SEP-20
+VEHICLE_ID             2284
+ACT_TIME              21033
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.692547
+GPS_LATITUDE      45.558042
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         137325     137325     137325   137325   137325    137325        137325       137325
+unique           703          1         30    52617       37       360         66141        52411
+top        168347148  20-SEP-20       2293    49094       11         0   -122.664093    45.690133
+freq             506     137325       8450       10     9837      7132           130          126
+MIN-----
+ EVENT_NO_TRIP     168402678
+OPD_DATE          20-SEP-20
+VEHICLE_ID             6010
+ACT_TIME              89490
+VELOCITY                 43
+DIRECTION               359
+GPS_LONGITUDE   -122.299482
+GPS_LATITUDE       45.78097
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168334470
+OPD_DATE          20-SEP-20
+VEHICLE_ID             2265
+ACT_TIME              21012
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.692553
+GPS_LATITUDE      45.558045
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         385104     385104     385104   385104   385104    385104        385104       385104
+unique          1713          1         91    67799       38       360        109940       101564
+top        168404080  21-SEP-20       6007    59975        0         0    -122.58484    45.656068
+freq             941     385104       8528       19    26464     23803           232          264
+MIN-----
+ EVENT_NO_TRIP     168497904
+OPD_DATE          21-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              90170
+VELOCITY                 37
+DIRECTION               359
+GPS_LONGITUDE   -122.320635
+GPS_LATITUDE      45.866855
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168365705
+OPD_DATE          21-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              15170
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708217
+GPS_LATITUDE       45.49436
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         364769     364769     364769   364769   364769    364769        364769       364769
+unique          1637          1         86    68028       37       360        108785        98950
+top        168499819  22-SEP-20       6001    56574       11         0   -122.660347    45.721665
+freq            1007     364769       8205       17    25370     21715           200          220
+MIN-----
+ EVENT_NO_TRIP    168544934
+OPD_DATE         22-SEP-20
+VEHICLE_ID         1254300
+ACT_TIME             90777
+VELOCITY                36
+DIRECTION              359
+GPS_LONGITUDE    -122.2995
+GPS_LATITUDE     45.866843
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168447390
+OPD_DATE          22-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              14925
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708225
+GPS_LATITUDE      45.494392
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         380074     380074     380074   380074   380074    380074        380074       380074
+unique          1636          1         91    68479       37       360        109810       100774
+top        168573908  23-SEP-20       6009    32773       11         0   -122.664727    45.689712
+freq            1009     380074       8258       18    27341     23198           271          267
+MIN-----
+ EVENT_NO_TRIP     168786498
+OPD_DATE          23-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              90986
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.320638
+GPS_LATITUDE      45.866857
+dtype: object
+MAX-----
+ EVENT_NO_TRIP    168551523
+OPD_DATE         23-SEP-20
+VEHICLE_ID            1776
+ACT_TIME             15269
+VELOCITY                 0
+DIRECTION                0
+GPS_LONGITUDE   -122.70826
+GPS_LATITUDE     45.494373
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         378529     378529     378529   378529   378529    378529        378529       378529
+unique          1673          1         92    68085       38       360        109303        99913
+top        168690829  24-SEP-20       2292    63241       11         0   -122.685457    45.596017
+freq             868     378529       8299       20    26255     23532           247          244
+MIN-----
+ EVENT_NO_TRIP    168787232
+OPD_DATE         24-SEP-20
+VEHICLE_ID         1298380
+ACT_TIME             90734
+VELOCITY                37
+DIRECTION              359
+GPS_LONGITUDE   -122.32062
+GPS_LATITUDE     45.866852
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168655326
+OPD_DATE          24-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              15197
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708245
+GPS_LATITUDE      45.494375
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         382659     382659     382659   382659   382659    382659        382659       382659
+unique          1661          1         87    67853       37       360        109411        99427
+top        168739030  25-SEP-20       2293    59052        0         0   -122.584668    45.721677
+freq             955     382659       8782       23    28415     24695           256          214
+MIN-----
+ EVENT_NO_TRIP     168845290
+OPD_DATE          25-SEP-20
+VEHICLE_ID          1254300
+ACT_TIME              90937
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.299493
+GPS_LATITUDE      45.866857
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168736366
+OPD_DATE          25-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              15101
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708235
+GPS_LATITUDE       45.49438
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         174945     174945     174945   174945   174945    174945        174945       174945
+unique           852          1         34    57398       37       360         76689        57584
+top        168863650  26-SEP-20       4019    58289       11         0   -122.602285    45.638917
+freq             505     174945       7409       12    12881      9782           174          167
+MIN-----
+ EVENT_NO_TRIP     168869568
+OPD_DATE          26-SEP-20
+VEHICLE_ID             6010
+ACT_TIME              89273
+VELOCITY                 36
+DIRECTION               359
+GPS_LONGITUDE   -122.299477
+GPS_LATITUDE      45.780967
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168820305
+OPD_DATE          26-SEP-20
+VEHICLE_ID             2269
+ACT_TIME              21143
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.692543
+GPS_LATITUDE      45.558037
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         133883     133883     133883   133883   133883    133883        133883       133883
+unique           700          1         29    52803       38       360         64935        51238
+top        168912603  27-SEP-20       4013    62256       11         0   -122.664075    45.690128
+freq             457     133883       7641       12     9679      7114           138          133
+MIN-----
+ EVENT_NO_TRIP    168923213
+OPD_DATE         27-SEP-20
+VEHICLE_ID            6010
+ACT_TIME             89686
+VELOCITY               159
+DIRECTION              359
+GPS_LONGITUDE   -122.29948
+GPS_LATITUDE     45.780968
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168871532
+OPD_DATE          27-SEP-20
+VEHICLE_ID             2269
+ACT_TIME              20958
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.692542
+GPS_LATITUDE      45.558053
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         376033     376033     376033   376033   376033    376033        376033       376033
+unique          1697          1         90    67846       39       360        108667        99342
+top        169002324  28-SEP-20       6008    62756        0         0   -122.678462    45.505105
+freq             933     376033       8191       18    25949     24141           320          308
+MIN-----
+ EVENT_NO_TRIP     169020234
+OPD_DATE          28-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              90121
+VELOCITY                 48
+DIRECTION               359
+GPS_LONGITUDE   -122.299497
+GPS_LATITUDE       45.86685
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     168925484
+OPD_DATE          28-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              15212
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708248
+GPS_LATITUDE      45.494387
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         369790     369790     369790   369790   369790    369790        369790       369790
+unique          1652          1         86    67636       39       360        108828        99073
+top        169026975  29-SEP-20       6006    62569        0         0     -122.6644    45.689707
+freq            1202     369790       8132       19    25749     23981           246          234
+MIN-----
+ EVENT_NO_TRIP    169163651
+OPD_DATE         29-SEP-20
+VEHICLE_ID         1298380
+ACT_TIME             90466
+VELOCITY               143
+DIRECTION              359
+GPS_LONGITUDE   -122.29949
+GPS_LATITUDE     45.866845
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     169026921
+OPD_DATE          29-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              15152
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708222
+GPS_LATITUDE      45.494402
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         368543     368543     368543   368543   368543    368543        368543       368543
+unique          1679          1         89    67781       38       360        108514        98463
+top        169164469  30-SEP-20       6006    61357        0         0     -122.6702    45.632672
+freq             922     368543       8228       18    25063     23491           473          482
+MIN-----
+ EVENT_NO_TRIP     169412346
+OPD_DATE          30-SEP-20
+VEHICLE_ID          1298380
+ACT_TIME              90141
+VELOCITY                 37
+DIRECTION               359
+GPS_LONGITUDE   -122.299487
+GPS_LATITUDE      45.866853
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     169124221
+OPD_DATE          30-SEP-20
+VEHICLE_ID             1776
+ACT_TIME              15062
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708235
+GPS_LATITUDE        45.4944
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         364665     364665     364665   364665   364665    364665        364665       364665
+unique          1679          1         87    67977       41       360        108417        97994
+top        169262341  01-OCT-20       6005    62194       11         0   -122.660342    45.594507
+freq             845     364665       7572       18    24995     23474           479          265
+MIN-----
+ EVENT_NO_TRIP     169357264
+OPD_DATE          01-OCT-20
+VEHICLE_ID          1298380
+ACT_TIME              90964
+VELOCITY                 74
+DIRECTION               359
+GPS_LONGITUDE   -122.299485
+GPS_LATITUDE      45.866858
+dtype: object
+MAX-----
+ EVENT_NO_TRIP     169239882
+OPD_DATE          01-OCT-20
+VEHICLE_ID             1776
+ACT_TIME              15099
+VELOCITY                  0
+DIRECTION                 0
+GPS_LONGITUDE   -122.708218
+GPS_LATITUDE      45.494395
+dtype: object
+---------------------------------------------------
+       EVENT_NO_TRIP   OPD_DATE VEHICLE_ID ACT_TIME VELOCITY DIRECTION GPS_LONGITUDE GPS_LATITUDE
+count         373850     373850     373850   373850   373850    373850        373850       373850
+unique          1702          1         87    68049       37       360        108612        99205
+top        169412421  02-OCT-20       6005    57040        0         0   -122.505928    45.690477
+freq             919     373850       8143       19    26292     24839           341          273
+MIN-----
+ EVENT_NO_TRIP    169472141
+OPD_DATE         02-OCT-20
+VEHICLE_ID         1298380
+ACT_TIME             90367
+VELOCITY                36
+DIRECTION              359
+GPS_LONGITUDE   -122.32064
+GPS_LATITUDE     45.866853
+dtype: object
+MAX-----
+ EVENT_NO_TRIP    169316609
+OPD_DATE         02-OCT-20
+VEHICLE_ID            1776
+ACT_TIME             15176
+VELOCITY                 0
+DIRECTION                0
+GPS_LONGITUDE   -122.70822
+GPS_LATITUDE     45.494382
+dtype: object
+---------------------------------------------------
