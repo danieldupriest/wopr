@@ -18,9 +18,7 @@ def get_test_file(date):
 def get_file_list():
     path = os.path.abspath('.')
     file_list = glob.glob(path + '/data/*')
-    test_file = path + "/data/2021_02_05.json"
     file_list.sort()
-    #return [test_file]
     return file_list
  
 # Convert a JSON breadcrumb data file to a pandas dataframe:

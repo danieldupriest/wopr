@@ -5,7 +5,9 @@ import json
 import os
 from lists import JSON_COLUMNS, SELECTED_HDRS, TO_DROP
 from utilities import get_file_list, json_to_df
+from convert_datetime import date_time_to_dfs, build_date_and_time, concat_date_time, convert_to_datetime 
 from transform import convert_to_mph 
+from valdata import validate_no_null
 
 # Clean the dataframe by dropping unneeded columns and rows with empty fields:
 def drop_cols_and_rows(df, TO_DROP):
@@ -39,70 +41,17 @@ def convert_and_set_dtypes(df):
     df = set_dtypes(df)
     return df
 
-##### PROCESS DATETIME ########################################################
-# Copy date and time to separate dataframes and convert to datetime dtype:
-def date_time_to_dfs(df):
-    datedf = df['OPD_DATE']
-    timedf = df['ACT_TIME']
-    datedf = pd.to_datetime(datedf, dayfirst=True, infer_datetime_format=True)
-    timedf = pd.to_datetime(timedf, unit='s')
-    # Is this still necessary? TODO Yes, for some reason yes.
-    timedf = pd.Series(timedf.dt.time)
-    return [datedf, timedf]
-
-# Convert from series to dataframe and rename date / time columns: 
-def build_date_and_time(datedf, timedf):
-    d = pd.DataFrame(data=datedf)
-    d = d.rename(columns={"OPD_DATE": "date"})
-    t = pd.DataFrame(data=timedf)
-    t = t.rename(columns={"ACT_TIME": "time"})
-    return [d,t]
-
-def concat_date_time(d, t):
-    # Combine, aggregate, and separate the final datetime column.
-    c = pd.concat([d,t], axis=1)
-    # Now create a new dataframe column out of the date and time columns:
-    c["tstamp"] = d["date"].astype(str) + " " + t["time"].astype(str)
-    # Finally, we have a single column dataframe with datetime to work with:
-    dt = c['tstamp']
-    return dt
-
-def convert_to_datetime(df, dt):
-    # Drop the columns used to aggregate datetime:
-    df.drop(['OPD_DATE', 'ACT_TIME'], axis=1, inplace=True)
-    # Concatenate the processed date and time dataframes:
-    df = pd.concat([df, dt], axis=1)
-    # Finally convert dt dataframe to datetime dtype:
-    df['tstamp'] = pd.to_datetime(df['tstamp'] )
-    return df
-
-##### END PROCESS DATETIME ####################################################
-
-def main():
-    # TODO
-    # Replace this when we have system for batch processing bc in consumer.
-    # Select the file(s) and put into dataframe:
-    path = os.path.abspath('.')
-    datafile = path + "/test/2021_02_06.json"
-    df = json_to_df(datafile, JSON_COLUMNS)
-
-
+def set_datatypes(df):
     # Drop unneeded columns and rows with empty string; set datatypes:
     df = drop_cols_and_rows(df, TO_DROP)
+    # Initial data validation for existance here:
+    errors = validate_no_null(df, SELECTED_HDRS[0:8]) 
 
-    '''
-    print(df.describe())
-    print(df.dtypes)
-    '''
+    for error in errors:
+        print(error)
 
     df = convert_and_set_dtypes(df)
 
-    '''
-    print(df.describe())
-    print(df.dtypes)
-    '''
-
-    '''
     ##### Process datetime #####
     # Process the 2 columns that have date/time data:
     dfs = date_time_to_dfs(df)
@@ -121,9 +70,17 @@ def main():
     #I'm dropping it so it doesn't cause trouble later on:
     df = df.drop(df.index[0])
 
-    print(df.head())
-    print(df.dtypes)
-    '''
+    return df
+
+
+def main():
+    filelist = get_file_list()
+    f = filelist[0] # Use the first JSON file for now
+    f = "/home/jemerson/wopr/test/2021_02_06.json"
+    df = json_to_df(f, JSON_COLUMNS) 
+
+    set_datatypes(df)
+
 
 if __name__ == '__main__':
     main()
