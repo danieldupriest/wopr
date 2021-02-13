@@ -1,18 +1,17 @@
 #!/bin/python3
 
+import json
 import psycopg2
 
-DB_NAME = "wopr"
-DB_USER = "wopr"
-DB_PASSWORD = "wopr"
-DB_HOST = "localhost"
+DATABASE_CONFIG = "database.conf"
 
 def connect():
+    conf = json.load(open(DATABASE_CONFIG))
     connection = psycopg2.connect(
-            host = DB_HOST,
-            database = DB_NAME,
-            user = DB_USER,
-            password = DB_PASSWORD,
+            host = conf['host'],
+            database = conf['database'],
+            user = conf['user'],
+            password = conf['password']
             )
     connection.autocommit = True
     return connection
