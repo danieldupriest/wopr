@@ -2,19 +2,7 @@
 
 import json
 import psycopg2
-
-DATABASE_CONFIG = "database.conf"
-
-def connect():
-    conf = json.load(open(DATABASE_CONFIG))
-    connection = psycopg2.connect(
-            host = conf['host'],
-            database = conf['database'],
-            user = conf['user'],
-            password = conf['password']
-            )
-    connection.autocommit = True
-    return connection
+import db_helper
 
 def initialize(conn):
     with conn.cursor() as cursor:
@@ -48,7 +36,7 @@ def initialize(conn):
         """)
 
 def main():
-    conn = connect()
+    conn = db_helper.connect()
     initialize(conn)
 
 if __name__ == "__main__":
