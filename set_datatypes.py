@@ -16,6 +16,7 @@ def drop_cols_and_rows(df, TO_DROP):
     # Drop the unneeded columns (axis=1 specifies columns):
     df = df.drop(TO_DROP, axis=1)
     # Drop rows where any field has an empty string (axis=0 specifies rows):
+    # TODO Maybe save the dropped bc to a list? Not sure how with dropna().
     df = df.dropna(axis=0)
     return df
 
@@ -41,6 +42,7 @@ def convert_and_set_dtypes(df):
     df = set_dtypes(df)
     return df
 
+# This should be renamed to maybe manage_bc() 
 def set_datatypes(df):
     # Drop unneeded columns and rows with empty string; set datatypes:
     df = drop_cols_and_rows(df, TO_DROP)

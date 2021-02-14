@@ -12,6 +12,7 @@ from utilities import get_file_list, json_to_df, map_dates
 from transform import convert_to_mph 
 #from set_datatypes import set_datatypes
 
+# Validate that no fields are null:
 def validate_no_null(df, columns):
     null_validation = CustomElementValidation(lambda d: d is not np.nan, 'this field cannot be null')
     

@@ -6,6 +6,9 @@ scraps.py
 /test/*
 *.swp
 
+# Database configuration
+database.conf
+
 # C extensions
 *.so
 
