@@ -4,7 +4,7 @@
 import json
 import psycopg2
 
-DATABASE_CONFIG = "database.conf"
+DATABASE_CONFIG = "/home/jemerson/wopr/database.conf"
 
 def connect():
     conf = json.load(open(DATABASE_CONFIG))
