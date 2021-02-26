@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import re
 from lists import STOP_HDRS_TO_DROP
+from datetime import datetime
 
 def print_all(df):
     with pd.option_context('display.max_rows', None,'display.max_columns', None):
@@ -15,7 +16,7 @@ def get_stop_data():
     url = "http://rbi.ddns.net/getStopEvents"
     html = urlopen(url)
     '''
-    html = "/home/jemerson/wopr/stop_data/test.html"
+    html = "/home/jemerson/wopr/stop_data_html/test.html"
     f = open(html, "r")
     soup = BeautifulSoup(f, 'lxml')
     
@@ -84,8 +85,13 @@ def get_stop_data():
 
 def main():
     all_data = get_stop_data()
-    print(all_data.head())
-
+    #print(all_data.head())
+    date = str(datetime.now().strftime("%Y_%m_%d")) 
+    json_file = '/home/jemerson/wopr/stop_data/' + date + '.json'
+    json_data = all_data.to_json(orient='records')
+    #print(json_data)
+    return json_data
    
+
 if __name__ == '__main__':
     main()

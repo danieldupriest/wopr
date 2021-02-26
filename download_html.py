@@ -8,7 +8,7 @@ def download_html():
     path = "/home/jemerson/wopr"
     #date = str(datetime.now().strftime("%Y_%m_%d_%H:%M")) # < For testing
     date = str(datetime.now().strftime("%Y_%m_%d")) 
-    datafile = path + "/stop_data/" + date + ".html"
+    datafile = path + "/stop_data_html/" + date + ".html"
     try:
         urllib.request.urlretrieve(url, datafile)
     except Exception:
