@@ -5,20 +5,28 @@ import pandas as pd
 import re
 from lists import STOP_HDRS_TO_DROP
 from datetime import datetime
+import download_html
 
 def print_all(df):
     with pd.option_context('display.max_rows', None,'display.max_columns', None):
         print(df)
 
-def get_stop_data():
+def get_stop_data(html):
     '''
     # Open URL and create a BeautifulSoup object to work with:
     url = "http://rbi.ddns.net/getStopEvents"
     html = urlopen(url)
     '''
+ 
     html = "/home/jemerson/wopr/stop_data_html/test.html"
     f = open(html, "r")
     soup = BeautifulSoup(f, 'lxml')
+
+    d = soup.find('h1') 
+    d = d.get_text(strip=True)
+    d = re.search("\d{4}-\d\d?-\d\d?", d)
+    print(d[0])
+    doc_date = d[0]
     
     headers = []
     hdrs = soup.find_all('th')
@@ -74,22 +82,33 @@ def get_stop_data():
         df['trip_id'] = trip_list[i]  
         dfs.append(df)
         
+        # Create df for date column:
+        df['date'] = doc_date
+        dfs.append(df)
+
     all_data = dfs[0]
     for i in range(1, len(dfs)):
         all_data = all_data.append(dfs[i])
 
-    all_data = all_data.drop(STOP_HDRS_TO_DROP, axis=1)
+    #TODO Do this in trip_set_datatypes instead:
+    #all_data = all_data.drop(STOP_HDRS_TO_DROP, axis=1)
 
     return all_data
 
 
 def main():
-    all_data = get_stop_data()
+    # Grab html file to process;
+    try:
+        html = download_html() 
+    except Exception:
+        print("HTML download failed for unknown reason.")
+
+    all_data = get_stop_data(html)
     #print(all_data.head())
     date = str(datetime.now().strftime("%Y_%m_%d")) 
     json_file = '/home/jemerson/wopr/stop_data/' + date + '.json'
     json_data = all_data.to_json(orient='records')
-    #print(json_data)
+    #print(json_data[:1000])
     return json_data
    
 

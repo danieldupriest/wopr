@@ -14,6 +14,7 @@ def download_html():
     except Exception:
         print("Download attempt failed for unknown reason.")
     
+    return datafile
 
 if __name__ == "__main__":
     download_html()

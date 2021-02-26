@@ -6,7 +6,7 @@ import download_html
 path = "/home/jemerson/wopr"
 date = str(datetime.now().strftime("%Y_%m_%d")) 
 time = str(datetime.now().strftime("%H:%M")) 
-datafile = path + "/stop_data/" + date + ".html"
+datafile = path + "/stop_data_html/" + date + ".html"
 logfile = path + "/log/" + "html_download_log.txt"
 success = False
 

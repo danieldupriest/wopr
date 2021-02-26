@@ -6,16 +6,17 @@ from confluent_kafka import Producer, KafkaError
 from datetime import datetime
 import glob
 import os
-#import json
+import json
 import random
 import time
-from proc_html import get_stop_data
-import csv
+#from proc_html import get_stop_data
+#import csv
 
+delivered_records=0
 WORKING_PATH = "/home/jemerson/wopr"
 CONFIG_FILE = "/home/jemerson/.confluent/librdkafka.config"
 
-# TODO Need to adjust these as needed:
+# TODO Adjust these as needed:
 ROWS_PER_INTERVAL = 8 # n rows sent every interval
 SLEEP_INTERVAL = 5 # seconds
 FILE_CHECK_RATE = 100 # check for new file once every n rows
@@ -26,7 +27,7 @@ def get_latest_data_file():
     latest_file = max(file_list, key=os.path.getctime)
 
     #TODO Process html data:
-    latest_file = get_stop_data()
+    #latest_file = get_stop_data()
     return latest_file
 
 # Opens the specified data file and returns the json interpretation.
@@ -41,6 +42,7 @@ def replace_data_file(data_file):
     #TODO
     data = json.load(file)
     #data.sort(key=lambda i: int(i["ACT_TIME"]))
+    return data
 
 # Optional per-message on_delivery handler (triggered by poll() or flush())
 # when a message has been successfully delivered or
@@ -58,6 +60,7 @@ def acked(err, msg):
         #      .format(msg.topic(), msg.partition(), msg.offset()))
 
 def main():
+    global delivered_records
     # Read configuration and initialize
     #TODO
     topic = "stop_data" # Changed from "breadcrumbs"
@@ -73,11 +76,11 @@ def main():
         'sasl.password': conf['sasl.password'],
     })
 
-    delivered_records=0
+    #delivered_records=0
     stop_event_data = replace_data_file(current_data_file) # Changed from json_data = replace_data_file(current_data_file)
     while True:
         i = 0
-        while i in range(len(stop_event_data): # Changed from json_data)):
+        while i in range(len(stop_event_data)): # Changed from json_data)):
             if i%ROWS_PER_INTERVAL == 0:
                 producer.flush()
                 time.sleep(SLEEP_INTERVAL)
