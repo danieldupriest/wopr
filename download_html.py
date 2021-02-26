@@ -2,6 +2,7 @@
 import urllib.request
 from datetime import datetime
 import os
+import proc_html
 
 def download_html():
     url = "http://34.83.136.192:8000/getStopEvents/"
@@ -11,6 +12,8 @@ def download_html():
     datafile = path + "/stop_data_html/" + date + ".html"
     try:
         urllib.request.urlretrieve(url, datafile)
+        success = proc_html()
+
     except Exception:
         print("Download attempt failed for unknown reason.")
     

@@ -25,9 +25,6 @@ FILE_CHECK_RATE = 100 # check for new file once every n rows
 def get_latest_data_file():
     file_list = glob.glob(WORKING_PATH + '/stop_data/*') # Changed from /data/*
     latest_file = max(file_list, key=os.path.getctime)
-
-    #TODO Process html data:
-    #latest_file = get_stop_data()
     return latest_file
 
 # Opens the specified data file and returns the json interpretation.
@@ -39,7 +36,7 @@ def replace_data_file(data_file):
         f.write(date + " " + time + " - " + "Loading data from file " + data_file + " for production.\n")
     file = open(data_file)
 
-    #TODO
+    #TODO Sort?
     data = json.load(file)
     #data.sort(key=lambda i: int(i["ACT_TIME"]))
     return data

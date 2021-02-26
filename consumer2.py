@@ -3,22 +3,20 @@ import json
 import db_helper
 import pandas as pd
 from confluent_kafka import Consumer
-from lists import STOP_HDRS_TO_KEEP # JSON_COLUMNS
-#from set_datatypes import set_datatypes
-from trip_set_datatypes import trip_set_dtypes
+from lists import STOP_HDRS_TO_KEEP
+from trip_set_datatypes import manage_stop_data
 
 DB_INSERT_BATCH_SIZE = 10
 
 # Carry out data validation and conversion
 def process_batch(batch):
     df = pd.DataFrame(batch)
-    #df.columns = STOP_HDRS_TO_KEEP #JSON_COLUMNS
+    #df.columns = STOP_HDRS_TO_KEEP
 
-    #TODO Convert as needed here
-    #df = set_datatypes(df)
-    df = set_dtypes(df)
+    #TODO Drop columns, convert datatypes:
+    df = manage_stop_data(df)
 
-    # Validation here maybe?
+    #TODO Validation here maybe?
 
     #TODO
     #add_data_to_database(df) 
@@ -80,7 +78,7 @@ def insert_trip(row, cur):
 def main():
     # Read arguments and configurations and initialize
     config_file = "/home/jemerson/.confluent/librdkafka.config"
-    topic = "stop_data" #TODO "breadcrumbs"
+    topic = "stop_data"
     conf = json.load(open(config_file))
 
     # Create Consumer instance

@@ -90,25 +90,26 @@ def get_stop_data(html):
     for i in range(1, len(dfs)):
         all_data = all_data.append(dfs[i])
 
-    #TODO Do this in trip_set_datatypes instead:
-    #all_data = all_data.drop(STOP_HDRS_TO_DROP, axis=1)
-
     return all_data
 
 
 def main():
+    '''
     # Grab html file to process;
     try:
         html = download_html() 
     except Exception:
         print("HTML download failed for unknown reason.")
-
+    '''
+    date = str(datetime.now().strftime("%Y_%m_%d"))
+    html = "/home/jemerson/wopr/stop_data_html/" + date + ".html"
     all_data = get_stop_data(html)
     #print(all_data.head())
-    date = str(datetime.now().strftime("%Y_%m_%d")) 
     json_file = '/home/jemerson/wopr/stop_data/' + date + '.json'
     json_data = all_data.to_json(orient='records')
+
     #print(json_data[:1000])
+    #TODO Don't actually need to return data, maybe a return code instead: 
     return json_data
    
 
