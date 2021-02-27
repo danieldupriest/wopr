@@ -12,20 +12,12 @@ def print_all(df):
         print(df)
 
 def get_stop_data(html):
-    '''
-    # Open URL and create a BeautifulSoup object to work with:
-    url = "http://rbi.ddns.net/getStopEvents"
-    html = urlopen(url)
-    '''
- 
-    html = "/home/jemerson/wopr/stop_data_html/test.html"
     f = open(html, "r")
     soup = BeautifulSoup(f, 'lxml')
 
     d = soup.find('h1') 
     d = d.get_text(strip=True)
     d = re.search("\d{4}-\d\d?-\d\d?", d)
-    print(d[0])
     doc_date = d[0]
     
     headers = []
@@ -94,24 +86,25 @@ def get_stop_data(html):
 
 
 def main():
-    '''
-    # Grab html file to process;
-    try:
-        html = download_html() 
-    except Exception:
-        print("HTML download failed for unknown reason.")
-    '''
     date = str(datetime.now().strftime("%Y_%m_%d"))
     html = "/home/jemerson/wopr/stop_data_html/" + date + ".html"
-    all_data = get_stop_data(html)
-    #print(all_data.head())
-    json_file = '/home/jemerson/wopr/stop_data/' + date + '.json'
-    json_data = all_data.to_json(orient='records')
 
-    #print(json_data[:1000])
-    #TODO Don't actually need to return data, maybe a return code instead: 
-    return json_data
-   
+    '''
+    #TEST:
+    html = "/home/jemerson/wopr/stop_data_html/test.html"
+    '''
+
+    all_data = get_stop_data(html)
+    json_file = '/home/jemerson/wopr/stop_data/' + date + '.json'
+    
+    '''
+    #TEST:
+    json_file = '/home/jemerson/wopr/stop_data/test.json'
+    json_data = all_data.to_json('/home/jemerson/wopr/stop_data/test.json', orient='records')
+    '''
+
+    all_data.to_json(json_file, orient='records')
+     
 
 if __name__ == '__main__':
     main()

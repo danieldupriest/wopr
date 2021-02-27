@@ -24,12 +24,12 @@ def convert_and_set_dtypes(df):
 # Set the datatypes so we can work with the data more effectively:
 def set_dtypes(df):
     df = df.astype({
-        'vehicle_number': 'int64' ,
+        'vehicle_number': 'int64',
         'route_number': 'int64',
         'direction': 'string',
         'service_key': 'string',
-        'trip_id': 'int64'
-        'date' 'string':
+        'trip_id': 'int64',
+        'date': 'string'
         })
     return df
 
@@ -51,7 +51,10 @@ def manage_stop_data(df):
    
 
 def main():
-    pass
+    ##### TESTING #####
+    df = pd.read_json('/home/jemerson/wopr/stop_data/test.json')     
+    df = manage_stop_data(df)
+    print(df.head())
     
 if __name__ == '__main__':
     main()

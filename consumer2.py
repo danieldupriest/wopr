@@ -17,6 +17,8 @@ def process_batch(batch):
     df = manage_stop_data(df)
 
     #TODO Validation here maybe?
+    # Check if trip_id in breadcrumb data
+    # Check if service date in breadcrumb data
 
     #TODO
     #add_data_to_database(df) 

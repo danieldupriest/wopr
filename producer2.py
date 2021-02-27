@@ -12,7 +12,7 @@ import time
 #from proc_html import get_stop_data
 #import csv
 
-delivered_records=0
+delivered_records = 0
 WORKING_PATH = "/home/jemerson/wopr"
 CONFIG_FILE = "/home/jemerson/.confluent/librdkafka.config"
 
@@ -23,7 +23,7 @@ FILE_CHECK_RATE = 100 # check for new file once every n rows
 
 # Grabs the path of the latest file in the data/ directory.
 def get_latest_data_file():
-    file_list = glob.glob(WORKING_PATH + '/stop_data/*') # Changed from /data/*
+    file_list = glob.glob(WORKING_PATH + '/stop_data/*')
     latest_file = max(file_list, key=os.path.getctime)
     return latest_file
 
@@ -31,7 +31,7 @@ def get_latest_data_file():
 def replace_data_file(data_file):
     date = str(datetime.now().strftime("%Y_%m_%d"))
     time = str(datetime.now().strftime("%H:%M"))
-    log_file_path = WORKING_PATH + "/log/" + "produce2_log.txt" # Changed from "produce_log.txt"
+    log_file_path = WORKING_PATH + "/log/" + "produce2_log.txt"
     with open(log_file_path, "a+") as f:
         f.write(date + " " + time + " - " + "Loading data from file " + data_file + " for production.\n")
     file = open(data_file)
@@ -57,10 +57,8 @@ def acked(err, msg):
         #      .format(msg.topic(), msg.partition(), msg.offset()))
 
 def main():
-    global delivered_records
     # Read configuration and initialize
-    #TODO
-    topic = "stop_data" # Changed from "breadcrumbs"
+    topic = "stop_data"
     conf = json.load(open(CONFIG_FILE))
     current_data_file = get_latest_data_file()
 
@@ -73,33 +71,30 @@ def main():
         'sasl.password': conf['sasl.password'],
     })
 
-    #delivered_records=0
-    stop_event_data = replace_data_file(current_data_file) # Changed from json_data = replace_data_file(current_data_file)
+    stop_event_data = replace_data_file(current_data_file)
+
     while True:
         i = 0
-        while i in range(len(stop_event_data)): # Changed from json_data)):
-            if i%ROWS_PER_INTERVAL == 0:
+        while i in range(len(stop_event_data)):
+            if i % ROWS_PER_INTERVAL == 0:
                 producer.flush()
                 time.sleep(SLEEP_INTERVAL)
-            if i%FILE_CHECK_RATE == 0:
+            if i % FILE_CHECK_RATE == 0:
                 latest_file = get_latest_data_file()
                 if latest_file != current_data_file:
-                    stop_event_data = replace_data_file(latest_file) # Changed from json_data = replace_data_file(latest_file)
+                    stop_event_data = replace_data_file(latest_file)
                     current_data_file = latest_file
                     i = 0
 
-            # TODO May need to change this depending on how stop_event_data is stored:
-            data_line = stop_event_data[i] # Changed from data_line = json_data[i]
-            record_key = "wopr_key2" # Changed from wopr_key
-
-            # TODO May need to change how each line is accessed:
+            data_line = stop_event_data[i]
+            record_key = "wopr_key2"
             record_value = json.dumps(data_line)
 
             producer.produce(topic, key=record_key, value=record_value, on_delivery=acked)
             producer.poll(0)
             i += 1
-
     producer.flush()
 
 if __name__ == '__main__':
     main()
+
