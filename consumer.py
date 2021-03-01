@@ -43,8 +43,6 @@ def add_data_to_database(df):
     conn.commit()
     cur.close()
     conn.close()
-    
-    print("Wrote {} breadcrumbs to the database.".format(DB_INSERT_BATCH_SIZE))
 
 # Check if a trip exists already in the database
 def trip_exists(trip_id, cur):
