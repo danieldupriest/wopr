@@ -15,7 +15,12 @@ try:
     success = True
     f.close()
 except IOError:
-    proc_html
+    try:
+        proc_html()
+    except:
+        log = open(logfile,"a+")
+        log.write(date + " " + time + "Could not process HTML at this time.\n"
+        log.close()
 
 try:
     log = open(logfile,"a+")

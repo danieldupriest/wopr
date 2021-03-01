@@ -15,7 +15,7 @@ try:
     success = True
     f.close()
 except IOError:
-    download_html.download_html()
+    download_html()
 
 try:
     log = open(logfile,"a+")

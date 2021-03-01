@@ -5,7 +5,6 @@ import os
 
 def download_json():
     url = "http://rbi.ddns.net/getBreadCrumbData"
-    #path = os.path.abspath('.')  
     path = "/home/jemerson/wopr"
     #date = str(datetime.now().strftime("%Y_%m_%d_%H:%M")) # < For testing
     date = str(datetime.now().strftime("%Y_%m_%d")) 
