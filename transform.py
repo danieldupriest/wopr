@@ -10,6 +10,11 @@ def convert_to_mph(df):
     df['VELOCITY'] = df['VELOCITY'] * 2.236936
     return df
 
+def transform_stop_data(df):
+    df['direction'] = df['direction'].replace(['0','1'], ["Out","Back"])
+    df['service_key'] = df['service_key'].replace(['W','S','U'], ["Weekday","Saturday","Sunday"])
+    return df
+
 def main():
     path = os.path.abspath('.')
     datafile = path + "/test/2021_02_06.json"

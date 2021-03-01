@@ -20,8 +20,9 @@ def process_batch(batch):
     # Check if trip_id in breadcrumb data
     # Check if service date in breadcrumb data
 
-    #TODO
-    #add_data_to_database(df) 
+    # Update database
+    add_data_to_database(df) 
+    print("Processed {} rows.".format(len(batch)))
 
 # Insert breadcrumb rows into database, generating trip ids as needed
 def add_data_to_database(df):
@@ -34,19 +35,17 @@ def add_data_to_database(df):
     for i, row in df.iterrows():
         
         # First check if trip exists
-        trip_id = row['EVENT_NO_TRIP']
+        trip_id = row['trip_id']
         if trip_exists(trip_id, cur):
-            insert_breadcrumb(row, cur)
+            print("trip exists")
+            update_trip(row, cur)
         else:
             insert_trip(row, cur)
-            insert_breadcrumb(row, cur)
 
     # Finalize changes and close connection
     conn.commit()
     cur.close()
     conn.close()
-    
-    print("Wrote {} breadcrumbs to the database.".format(DB_INSERT_BATCH_SIZE))
 
 # Check if a trip exists already in the database
 def trip_exists(trip_id, cur):
@@ -62,19 +61,35 @@ def trip_exists(trip_id, cur):
         return True
     return False
 
+# Update trip with direction and service_key info
+def update_trip(row, cur):
+    route_id = row['route_number']
+    trip_id = row['trip_id']
+    direction = row['direction']
+    service_key = row['service_key']
+    cur.execute("""
+        UPDATE trip
+        SET direction = %s, service_key = %s, route_id = %s
+        WHERE trip_id = %s
+        """,
+        (direction, service_key, route_id, trip_id)
+    )
+    print("Updating trip no", trip_id)
+
 # Insert trip into database (required as a foreign key for breadcrumbs)
 def insert_trip(row, cur):
-    trip_id = row['EVENT_NO_TRIP']
-    route_id = 0
-    vehicle_id = row['VEHICLE_ID']
-    service_key = 'Weekday'
-    direction = 'Out'
+    trip_id = row['trip_id']
+    route_id = row['route_number']
+    vehicle_id = row['vehicle_number']
+    service_key = row['service_key']
+    direction = row['direction']
     cur.execute("""
         INSERT INTO trip (trip_id, route_id, vehicle_id, service_key, direction)
         VALUES (%s, %s, %s, %s, %s)
         """,
         (trip_id, route_id, vehicle_id, service_key, direction)
     )
+    print("Inserting trip no", trip_id)
 
 # Consume from kafka topic, validate, transform and insert into database
 def main():

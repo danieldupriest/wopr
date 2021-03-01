@@ -8,6 +8,7 @@ VEHICLE_IDS = [2267, 2271, 2284, 2285, 2287, 2289, 2290, 2401, 2404, 4002, 4003,
 
 STOP_HDRS = ['vehicle_number','leave_time','train','route_number','direction','service_key','stop_time','arrive_time','dwell','location_id','door','lift','ons','offs','estimated_load','maximum_speed','train_mileage','pattern_distance','location_distance','x_coordinate','y_coordinate','data_source','schedule_status','trip_id']
 
+
 STOP_HDRS_TO_KEEP = ['vehicle_number','route_number','direction','service_key','trip_id','date']
 
-STOP_HDRS_TO_DROP = ['leave_time','train','stop_time','arrive_time','dwell','location_id','door','lift','ons','offs','estimated_load','maximum_speed','train_mileage','pattern_distance','location_distance','x_coordinate','y_coordinate','data_source','schedule_status']
+STOP_HDRS_TO_DROP = ['leave_time','train','stop_time','dwell','door','lift','ons','offs','estimated_load','maximum_speed','train_mileage','pattern_distance','location_distance','x_coordinate','y_coordinate','data_source','schedule_status']

@@ -15,6 +15,10 @@ database.conf
 # Data
 data/
 
+# Stop Data
+stop_data/
+stop_data_html/
+
 # Log
 log/
 

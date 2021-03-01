@@ -17,7 +17,7 @@ WORKING_PATH = "/home/jemerson/wopr"
 CONFIG_FILE = "/home/jemerson/.confluent/librdkafka.config"
 
 # TODO Adjust these as needed:
-ROWS_PER_INTERVAL = 8 # n rows sent every interval
+ROWS_PER_INTERVAL = 10 # n rows sent every interval
 SLEEP_INTERVAL = 5 # seconds
 FILE_CHECK_RATE = 100 # check for new file once every n rows
 
@@ -36,9 +36,9 @@ def replace_data_file(data_file):
         f.write(date + " " + time + " - " + "Loading data from file " + data_file + " for production.\n")
     file = open(data_file)
 
-    #TODO Sort?
+    #Sort
     data = json.load(file)
-    #data.sort(key=lambda i: int(i["ACT_TIME"]))
+    data.sort(key=lambda i: int(i["arrive_time"]))
     return data
 
 # Optional per-message on_delivery handler (triggered by poll() or flush())

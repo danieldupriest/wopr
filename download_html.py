@@ -12,12 +12,12 @@ def download_html():
     datafile = path + "/stop_data_html/" + date + ".html"
     try:
         urllib.request.urlretrieve(url, datafile)
-        proc_html()
 
     except Exception:
         print("Download attempt failed for unknown reason.")
     
     return datafile
+
 
 if __name__ == "__main__":
     download_html()
