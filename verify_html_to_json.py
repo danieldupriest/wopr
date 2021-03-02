@@ -2,6 +2,7 @@
 from datetime import datetime
 import os
 import download_html
+from proc_html import proc_html
 
 path = "/home/jemerson/wopr"
 date = str(datetime.now().strftime("%Y_%m_%d")) 
@@ -21,6 +22,7 @@ except IOError:
         log = open(logfile,"a+")
         log.write(date + " " + time + "Could not process HTML at this time.\n"
         log.close()
+        break
 
 try:
     log = open(logfile,"a+")

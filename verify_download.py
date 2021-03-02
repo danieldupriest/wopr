@@ -5,6 +5,7 @@ import download_json
 
 path = "/home/jemerson/wopr"
 date = str(datetime.now().strftime("%Y_%m_%d")) 
+time = str(datetime.now().strftime("%H:%M")) 
 datafile = path + "/data/" + date + ".json"
 logfile = path + "/log/" + "download_log.txt"
 success = False
@@ -14,7 +15,7 @@ try:
     success = True
     f.close()
 except IOError:
-    download_json()
+    download_json.download_json()
 
 try:
     log = open(logfile,"a+")

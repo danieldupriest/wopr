@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from datetime import datetime
 import os
-import download_html
+from download_html import download_html
 
 path = "/home/jemerson/wopr"
 date = str(datetime.now().strftime("%Y_%m_%d")) 
@@ -20,9 +20,9 @@ except IOError:
 try:
     log = open(logfile,"a+")
     if success is True:
-        log.write(date + " " + time + " Download appears to have been successful.\n")
+        log.write(date + " " + time + " HTML download appears to have been successful.\n")
     elif success is False:
-        log.write(date + " " + time + " Download appears to have failed, so we'll re-download.\n")
+        log.write(date + " " + time + " HTML download appears to have failed, so we'll re-download.\n")
 except IOError:
     pass
 finally:

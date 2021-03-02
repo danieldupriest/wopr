@@ -114,14 +114,14 @@ def process_latest_html():
     json_file = '/home/jemerson/wopr/stop_data/' + date + '.json'
     all_data.to_json(json_file, orient='records')
 
-def main():
+def proc_html():
+    #process_other_html("test")
     if len(sys.argv) > 1:
         filename = sys.argv[1]
         process_other_html(filename)
     else:
         process_latest_html()
-    #process_test_html("test")
      
 
 if __name__ == '__main__':
-    main()
+    proc_html()
