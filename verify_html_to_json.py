@@ -10,6 +10,7 @@ time = str(datetime.now().strftime("%H:%M"))
 datafile = path + "/stop_data/" + date + ".json"
 logfile = path + "/log/" + "html_to_json_log.txt"
 success = False
+proc_fail = False
 
 try:
     f = open(datafile)
@@ -19,16 +20,16 @@ except IOError:
     try:
         proc_html()
     except:
+        proc_fail = True
         log = open(logfile,"a+")
-        log.write(date + " " + time + "Could not process HTML at this time.\n"
+        log.write(date + " " + time + "Could not process HTML at this time.\n")
         log.close()
-        break
 
 try:
     log = open(logfile,"a+")
     if success is True:
         log.write(date + " " + time + " Convert HTML to JSON appears to have been successful.\n")
-    elif success is False:
+    elif success is False and proc_fail is False:
         log.write(date + " " + time + " Convert HTML to JSON appears to have failed, so we'll re-download.\n")
 except IOError:
     pass
